@@ -5,13 +5,12 @@ from .base_model import BaseModel
 
 class Openai(BaseModel):
 
-    def __init__(self,  model_name: str, api_key: str):
-         
+    def __init__(self, model_name: str, api_key: str, url: str = None):
+
         super().__init__(model_name, api_key)
-        self.client = OpenAI(api_key=api_key)
+        self.client = OpenAI(api_key=api_key, base_url=url) if url is not None else OpenAI(api_key=api_key)
         self.model_name = model_name
-        
-        
+
     def describe(self, frame_urls, prompt):
         
         
@@ -44,6 +43,7 @@ class Openai(BaseModel):
             
             response = self.client.chat.completions.create(
                 model=self.model_name,
+                temperature=0.0,
                 messages=messages
             )
             

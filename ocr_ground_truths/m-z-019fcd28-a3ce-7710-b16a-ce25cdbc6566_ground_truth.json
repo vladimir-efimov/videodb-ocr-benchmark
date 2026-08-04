@@ -1,0 +1,50 @@
+[
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 0.0,
+    "end": 30.0,
+    "frame_time": 15.0,
+    "ocr_text": "OCR RAG база знаний векторная БД эмбеддинги чанки",
+    "processing_time": 4.780639886856079
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 30.0,
+    "end": 60.0,
+    "frame_time": 45.0,
+    "ocr_text": "OCR RAG база знаний векторная БД эмбеддинги чанки",
+    "processing_time": 4.780639886856079
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 60.0,
+    "end": 90.0,
+    "frame_time": 75.0,
+    "ocr_text": "OCR RAG база знаний векторная БД эмбеддинги чанки",
+    "processing_time": 4.780639886856079
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 90.0,
+    "end": 120.0,
+    "frame_time": 105.0,
+    "ocr_text": "Provision provisionlabs OCR LLM enterprise приватный ИИ",
+    "processing_time": 4.780639886856079
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 120.0,
+    "end": 150.0,
+    "frame_time": 135.0,
+    "ocr_text": "Provision provisionlabs скачать Trial import requests response json image compose title",
+    "processing_time": 4.780639886856079
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 150.0,
+    "end": 180.0,
+    "frame_time": 165.0,
+    "ocr_text": "Provision provisionlabs скачать Trial import requests response json image compose title",
+    "processing_time": 4.780639886856079
+  }
+]

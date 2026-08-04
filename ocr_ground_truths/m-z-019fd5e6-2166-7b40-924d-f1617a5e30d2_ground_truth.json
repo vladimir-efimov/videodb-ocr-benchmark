@@ -1,0 +1,50 @@
+[
+  {
+    "video_id": "m-z-019fd5e6-2166-7b40-924d-f1617a5e30d2",
+    "start": 0.0,
+    "end": 30.0,
+    "frame_time": 15.0,
+    "ocr_text": "Java Spring AI конфигурируемые компоненты векторная БД Boot брокер сообщений",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 30.0,
+    "end": 60.0,
+    "frame_time": 45.0,
+    "ocr_text": "Java Spring AI конфигурируемые компоненты векторная БД Boot брокер сообщений",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 60.0,
+    "end": 90.0,
+    "frame_time": 75.0,
+    "ocr_text": "Java Spring AI конфигурируемые компоненты векторная БД Boot брокер сообщений",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 90.0,
+    "end": 120.0,
+    "frame_time": 105.0,
+    "ocr_text": "python OpenAI messages client response chat completions perplexity",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 120.0,
+    "end": 150.0,
+    "frame_time": 135.0,
+    "ocr_text": "python OpenAI messages client response chat completions perplexity",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fcd28-a3ce-7710-b16a-ce25cdbc6566",
+    "start": 150.0,
+    "end": 169.5,
+    "frame_time": 159.8,
+    "ocr_text": "python OpenAI messages client response chat completions perplexity Spring AI Advisors",
+    "processing_time": 0.0
+  }
+]

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+
+# Окружение
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Статистика
+_results/
+_evaluation/
+_*/

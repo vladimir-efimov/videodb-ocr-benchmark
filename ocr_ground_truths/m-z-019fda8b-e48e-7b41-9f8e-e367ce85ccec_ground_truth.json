@@ -1,0 +1,114 @@
+[
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 0.0,
+    "end": 30.0,
+    "frame_time": 15.0,
+    "ocr_text": "Требования корпоративной информации локальная установка LLM RAG обеспечение качества ответов",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 30.0,
+    "end": 60.0,
+    "frame_time": 45.0,
+    "ocr_text": "Требования корпоративной информации локальная установка LLM RAG обеспечение качества ответов",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 60.0,
+    "end": 90.0,
+    "frame_time": 75.0,
+    "ocr_text": "Требования локальная установка LLM",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 90.0,
+    "end": 120.0,
+    "frame_time": 105.0,
+    "ocr_text": "Требования локальная установка LLM",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 120.0,
+    "end": 150.0,
+    "frame_time": 135.0,
+    "ocr_text": "Требования локальная установка LLM",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 150.0,
+    "end": 180.0,
+    "frame_time": 165.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 180.0,
+    "end": 210.0,
+    "frame_time": 195.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 210.0,
+    "end": 240.0,
+    "frame_time": 225.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 240.0,
+    "end": 270.0,
+    "frame_time": 255.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 270.0,
+    "end": 300.0,
+    "frame_time": 285.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 300.0,
+    "end": 300.2,
+    "frame_time": 300.1,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 300.0,
+    "end": 330.0,
+    "frame_time": 315.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 330.0,
+    "end": 360.0,
+    "frame_time": 345.0,
+    "ocr_text": "локальная установка",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fda8b-e48e-7b41-9f8e-e367ce85ccec",
+    "start": 360.0,
+    "end": 390.0,
+    "frame_time": 375.0,
+    "ocr_text": "Архитектура Браузер Контроллер База знаний Spring Web MVC Hibernate",
+    "processing_time": 0.0
+  }
+]

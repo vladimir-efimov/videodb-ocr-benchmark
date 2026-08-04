@@ -1,1 +1,10 @@
-ocr : "Perform OCR on this image. Return only the text found in the image as a single continuous string without any newlines, additional text, or commentary. Separate words with single spaces. For any truncated, partially visible, or occluded text, include only the visible portions without attempting to complete or guess the full text. If no text is present, return empty double quotes."
+# from original benchmark
+default : "Perform OCR on this image. Return only the text found in the image as a single continuous string without any newlines, additional text, or commentary. Separate words with single spaces. For any truncated, partially visible, or occluded text, include only the visible portions without attempting to complete or guess the full text. If no text is present, return empty double quotes."
+
+ollama : "Please recognize text on the picture. Text may contain English or Russian words."
+
+#https://github.com/deepseek-ai/DeepSeek-OCR
+cloud_ru0 : "Convert the document to markdown."
+cloud_ru1 : "Free OCR."
+cloud_ru2 : "OCR this image."
+cloud_ru : "Free OCR. Image may contain English or Russian words."

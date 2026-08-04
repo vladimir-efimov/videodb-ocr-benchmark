@@ -1,4 +1,5 @@
 import os
+from selectors import SelectSelector
 
 import models
 import videodb
@@ -10,15 +11,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-MOONDREAM_API_KEY = os.getenv("MOONDREAM_API_KEY")
-
+CLOUD_RU_API_KEY = os.getenv("CLOUD_RU_API_KEY")
 
 class BaseTask(ABC):
-    def __init__(self, prompt: str = None):
-        self.prompt = prompt
+    def __init__(self, prompts=None):
+        if prompts is None:
+            prompts = {}
+        self.prompts = prompts
 
     @abstractmethod
     def run(self, model_name: str, video_scenes: List[Any], video_id: str) -> Dict:
@@ -62,26 +61,24 @@ class BaseTask(ABC):
         return videos[:num_vids]
 
     def get_model(self, model_name: str) -> Any:
-        if "gemini" in model_name:
-            return models.Gemini(model_name, GEMINI_API_KEY)
 
-        elif "gpt" in model_name:
-            return models.Openai(model_name, OPENAI_API_KEY)
+        if model_name == "cloud_ru":
+            return models.Openai("deepseek-ai/DeepSeek-OCR-2", CLOUD_RU_API_KEY,
+                                 "https://foundation-models.api.cloud.ru/v1")
 
-        elif "claude" in model_name:
-            return models.Claude(model_name, ANTHROPIC_API_KEY)
-
-        elif "moondream" in model_name:
-            return models.Moondream(model_name, MOONDREAM_API_KEY)
-
-        elif model_name == "rapidocr":
-            return models.Rapidocr(model_name)
-
-        elif model_name == "easyocr":
-            return models.Easyocr(model_name)
+        elif model_name == "ollama":
+            return models.Ollama("qwen3-vl:8b")
 
         else:
             raise AttributeError(f"Model '{model_name}' is not implemented.")
+
+    def get_prompt(self, model_name: str) -> str:
+        if model_name in self.prompts:
+            return self.prompts[model_name]
+        elif "default" in self.prompts:
+           return self.prompts["default"]
+        else:
+           raise AttributeError(f"Configuration has no prompt for '{model_name}'. Also default prompt is missed")
 
     def evaluate(
         self, video_predictions: Dict = None, video_ground_truth: Dict = None

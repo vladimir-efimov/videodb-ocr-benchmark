@@ -1,0 +1,170 @@
+[
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 0.0,
+    "end": 30.0,
+    "frame_time": 15.0,
+    "ocr_text": "spring initializr add dependences yandexcloud Project Configuration Java",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 30.0,
+    "end": 60.0,
+    "frame_time": 45.0,
+    "ocr_text": "spring initializr add dependences yandexcloud Project Configuration Java OpenAI ChatGPT",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 60.0,
+    "end": 90.0,
+    "frame_time": 75.0,
+    "ocr_text": "SpringApplication SpringBootApplication Project yandexcloud public static void main",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 90.0,
+    "end": 120.0,
+    "frame_time": 105.0,
+    "ocr_text": "SpringBootApplication version control yandexcloud YandexcloudApplication src main test",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 120.0,
+    "end": 150.0,
+    "frame_time": 135.0,
+    "ocr_text": "package import SpringBootApplication version control yandexcloud getChatClient",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 150.0,
+    "end": 180.0,
+    "frame_time": 165.0,
+    "ocr_text": "YandexcloudApplicationTests src main test Autowired ChatClient import package",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 180.0,
+    "end": 210.0,
+    "frame_time": 195.0,
+    "ocr_text": "YandexcloudApplicationTests src main test Autowired ChatClient junit jupiter userPrompt",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 210.0,
+    "end": 240.0,
+    "frame_time": 225.0,
+    "ocr_text": "YandexcloudApplicationTests Autowired ChatClient junit jupiter userPrompt REST controller",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 240.0,
+    "end": 270.0,
+    "frame_time": 255.0,
+    "ocr_text": "YandexcloudApplicationTests SpringBootTest ChatClient junit jupiter userPrompt REST controller",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 270.0,
+    "end": 300.0,
+    "frame_time": 285.0,
+    "ocr_text": "YandexcloudApplicationTests SpringBootTest ChatClient userPrompt REST controller llmRequestExample IllegalArgumentException OpenAI",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 300.0,
+    "end": 330.0,
+    "frame_time": 315.0,
+    "ocr_text": "connection properties yandexcloud test failed",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 330.0,
+    "end": 360.0,
+    "frame_time": 345.0,
+    "ocr_text": "docs spring io introduction api StreamingModel Hugging Face",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 360.0,
+    "end": 390.0,
+    "frame_time": 375.0,
+    "ocr_text": "docs spring io Overview Reference connection properties OpenAI Chat",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 390.0,
+    "end": 420.0,
+    "frame_time": 405.0,
+    "ocr_text": "yandexcloud YandexcloudApplicationTest springframework NonTransientAiException unsupported country region",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 420.0,
+    "end": 450.0,
+    "frame_time": 435.0,
+    "ocr_text": "Yandex Cloud совместимость AI Studio концепции начало работы import openai",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 450.0,
+    "end": 480.0,
+    "frame_time": 465.0,
+    "ocr_text": "console yandex cloud обзор модели инстансы",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 480.0,
+    "end": 510.0,
+    "frame_time": 495.0,
+    "ocr_text": "yandexcloud YandexcloudApplicationTest springframework NonTransientAiException unsupported country region",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 510.0,
+    "end": 540.0,
+    "frame_time": 525.0,
+    "ocr_text": "yandexcloud YandexcloudApplicationTest springframework NonTransientAiException unsupported country region Yandex Cloud Folder",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 540.0,
+    "end": 570.0,
+    "frame_time": 555.0,
+    "ocr_text": "yandexcloud src main test application properties test passed",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 570.0,
+    "end": 600.0,
+    "frame_time": 585.0,
+    "ocr_text": "yandexcloud SpringBootTest YandexcloudApplicationTest llmRequestExample ChatClient ChatClientRequestSpec userPrompt",
+    "processing_time": 0.0
+  },
+  {
+    "video_id": "m-z-019fd644-2aac-7a30-a71a-88e761f370c3",
+    "start": 600.0,
+    "end": 623.1,
+    "frame_time": 611.6,
+    "ocr_text": "yandexcloud SpringBootTest YandexcloudApplicationTest llmRequestExample ChatClient ChatClientRequestSpec userPrompt prompt modelName",
+    "processing_time": 0.0
+  }
+]

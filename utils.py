@@ -1,7 +1,11 @@
-import os
-from typing import List
-import logging
 import json
+import logging
+import os
+import re
+import yaml
+from typing import List
+from pathlib import Path
+
 
 def create_directories(args) -> List[str]:
     """
@@ -15,28 +19,12 @@ def create_directories(args) -> List[str]:
     """
     # Define model groups
     model_groups = {
-        'openai': {
-            'base_dir': args.openai_results_dir,
-            'models': ['gpt-4o', 'gpt-4o-mini', 'chatgpt-4o-latest', 'gpt-4-turbo']
-        },
-        'anthropic': {
-            'base_dir': args.anthropic_results_dir,
-            'models': ['claude-3-5-sonnet-latest']
-        },
-        'google': {
-            'base_dir': args.google_results_dir,
-            'models': ['gemini-1.5-flash', 'gemini-1.5-flash-8b', "gemini-1.5-pro"]
-        },
-    }
-    
-    
-    model_groups.update({
-        'ocr': {
-            'base_dir': args.ocr_results_dir,
-            'models': ['rapidocr', 'easyocr']
+        'vlm': {
+            'base_dir': os.path.join(args.results_dir, "vlm"),
+            'models': ['cloud_ru', 'ollama']
         }
-    })
-    
+    }
+
     processed_paths = []
     
     def create_model_dir(base_dir: str, model: str) -> None:
@@ -61,15 +49,6 @@ def create_directories(args) -> List[str]:
                 for model in group['models']:
                     create_model_dir(group['base_dir'], model)
             return True
-        
-         # Check if it's "benchmark"
-        if model_name.lower() == "benchmark":
-            for group in model_groups.values():
-                for model in group['models']:
-                    if model in ["gpt-4o","gemini-1.5-pro", "claude-3-5-sonnet-latest", "easyocr", "rapidocr"]:
-                        create_model_dir(group['base_dir'], model)
-            return True
-            
 
         # Check if it's a group name
         if model_name.lower() in model_groups:
@@ -129,61 +108,68 @@ def setup_logging(path: str, current_run: str) -> logging.Logger:
     logger.addHandler(ch)
     
     return logger, current_run_dir
-        
-        
-        
-def save_summary(current_run):
-    os.makedirs("evaluation_summary",exist_ok=True)
+
+def load_yaml_config(file_path: str) -> dict:
+    yaml_path = Path(file_path)
+    if not yaml_path.exists():
+        raise FileNotFoundError(f"YAML file not found: {file_path}")
+
+    with open(yaml_path, "r") as file:
+        config = yaml.safe_load(file)
+    return config
+
+
+def calculate_num_occurrences(ground_truth: str, ocr_text: str):
+    """
+    Calculate the number of occurrences of words from ground_truth
+    """
+    key_words = re.findall(r'\w+', ground_truth.lower())
+    ocr_tokens = re.findall(r'\w+', ocr_text.lower())
+    ocr_set = set(ocr_tokens)  # O(len(ocr_tokens))
+    num_occurrences = 0
+    for word in key_words:
+        if word in ocr_set:
+            num_occurrences += 1
+    total_words = len(key_words)
+
+    return num_occurrences, total_words
+
+
+def make_summary(current_run, results_dir) -> List:
     summary = []
     
-    for model_result in os.listdir("ocr_results"):
-        for model in os.listdir(os.path.join("ocr_results",model_result)):
-            cer = 0
-            wer = 0
-            acc = 0
-            order_agnostic_acc = 0
+    for model_result in os.listdir(results_dir):
+        for model in os.listdir(os.path.join(results_dir,model_result)):
+            num_occurrences = 0
+            num_key_words = 0
             total_frames = 0
             total_vids = 0
-        
-            for run in os.listdir(os.path.join("ocr_results",model_result, model)):
+
+            for run in os.listdir(os.path.join(results_dir,model_result, model)):
                 
                 if current_run in run:
-                    for evals in os.listdir(os.path.join("ocr_results",model_result, model,run,"evaluations")):
+                    for evals in os.listdir(os.path.join(results_dir,model_result, model,run,"evaluations")):
                         total_vids+=1
                         
-                        json_path = os.path.join("ocr_results",model_result, model,run,"evaluations",evals)
+                        json_path = os.path.join(results_dir,model_result, model,run,"evaluations",evals)
                         
                         with open(json_path,"r") as f:
                             json_data = json.load(f)
                             
                         for entry in json_data:
-                            cer+=entry["cer"]
-                            wer+=entry["wer"]
-                            acc+=entry["accuracy"]
-                            order_agnostic_acc+=entry["order_agnostic_accuray"]
-                            total_frames+=1
-                            
+                            num_occurrences += entry["num_occurrences"]
+                            num_key_words += entry["num_key_words"]
+                            total_frames += 1
+
             if total_vids!=0:
                 summary.append(
                     {
                         "model" : model,
                         "total_vids" : total_vids,
                         "total_frames" : total_frames,
-                        "avg_cer" : cer/total_frames,
-                        "avg_wer" : wer/total_frames,
-                        "avg_acc" : acc/total_frames,
-                        "avg_order_agnostic_acc" : order_agnostic_acc/total_frames                    
-                        
+                        "num_occurrences": num_occurrences,
+                        "num_key_words": num_key_words,
+                        "avg_acc" : num_occurrences / num_key_words,
                     }
                 )
-            
-    with open(os.path.join("evaluation_summary",f"{current_run}.json"), "w") as f:
-        
-        json.dump(summary,f)
-            
-        
-                            
-                                
-                            
-        
-    
+    return summary

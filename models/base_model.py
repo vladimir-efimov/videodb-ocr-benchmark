@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import base64
 import requests
 from PIL import Image
 from io import BytesIO
@@ -52,12 +53,14 @@ class BaseModel(ABC):
                 "https://storage.videodb.io"):
             response = requests.get(image_url)
             if response.status_code == 200:
-                return Image.open(BytesIO(response.content))
+                return response.content
             else:
-                raise AttributeError(f"Error encoding image from {image_url}: {str(e)}")
-                
+                raise AttributeError(f"Failed to download image from {image_url}")
         else:
             try:
                 return Image.open(image_url)
             except Exception as e:
                 raise AttributeError(f"Error encoding image from {image_url}: {str(e)}")
+
+    def image_to_base64(self, image_bytes):
+        return base64.b64encode(image_bytes).decode("utf-8")

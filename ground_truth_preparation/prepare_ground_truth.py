@@ -29,7 +29,7 @@ for video in videos:
     try:
         extracted_scenes = video.extract_scenes(
             extraction_type=videodb.SceneExtractionType.time_based,
-            extraction_config={"time": 1, "select_frames": ["first"]},
+            extraction_config={"time": 30, "select_frames": ["first"]},
         )
         video_scenes = extracted_scenes.scenes
         print(f"Scenes extracted successfully for the {video.name} ({video.id}).")
