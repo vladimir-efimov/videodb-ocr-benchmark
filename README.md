@@ -1,12 +1,15 @@
 # Benchmarking Vision-Language Models on Optical Character Recognition in Dynamic Video Environments
 
-This repository contains a benchmarking framework for evaluating OCR (Optical Character Recognition) performance using multiple vision-language models (VLMs) and OCR engines. The framework is designed to work with [VideoDB public collections](https://docs.videodb.io/public-collections-102) and supports several models including OpenAI, Google Gemini, Anthropic Claude, Moondream, EasyOCR, and RapidOCR.
+This repository contains a benchmarking framework from VideoDB. It's a fork of https://github.com/video-db/ocr-benchmark.
 
-For detailed methodology and analysis, please refer to our paper: [Benchmarking Vision-Language Models on Optical Character Recognition in Dynamic Video Environments](https://arxiv.org/abs/2502.06445)
+Branches:
+ - main - original branch copied as is, may be outdated compare to original benchmark
+ - article - this branch contains modifications for Habr article https://habr.com/ru/articles/1074910/
+
 
 ## Table of Contents
 - [Overview](#overview)
-- [Benchmark Results](#benchmark-results)
+- [Modifications](#modifications)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
@@ -20,29 +23,26 @@ For detailed methodology and analysis, please refer to our paper: [Benchmarking 
 This project benchmarks OCR performance across different models by:
 - Extracting scenes from videos using [VideoDB](https://videodb.io).
 - Running OCR on the extracted frames using various models.
-- Comparing OCR outputs against ground truth to compute error metrics such as Character Error Rate (CER) and Word Error Rate (WER).
+- Comparing OCR outputs against ground truth.
 
 The modular design allows you to easily extend the framework by adding new models or other vision tasks.
 
-### Benchmark Results
+## Modifications
 
-Our comprehensive evaluation shows that Vision-Language Models (VLMs) significantly outperform traditional OCR systems:
+This section describes modifications which are made in branch `article` to make measurements for the Habr article.
 
-| Model | Character Error Rate (CER) | Word Error Rate (WER) | Average Accuracy (%) |
-|-------|---------------------------|----------------------|-------------------|
-| RapidOCR | 0.4302 | 0.7620 | 56.98 (↓19.24) |
-| EasyOCR | 0.5070 | 0.8262 | 49.30 (↓26.92) |
-| Claude-3.5 Sonnet | 0.3229 | 0.4663 | 67.71 (↓8.51) |
-| Gemini-1.5 Pro | 0.2387 | 0.2385 | 76.13 (↓0.09) |
-| GPT-4o | 0.2378 | 0.5117 | 76.22 |
-
+- Compared results of Qwen3-VL launched with Ollama and DeepSeek-OCR used from cloud.ru
+- Substituted set of video for benchmark. Used educational video with IDE screens, slides, documentation, command line and so on. Actually good goal of such systems like VideoDB is to make easy navigation on educational videos. 
+- Measured number of matched words from ground truth, order of words is not measured (for some screens, for example IDE screen, not so quite correctly to insist on specific word order).
+- Ground thuth contains key words - some screens (IDE for example) contained too much words
 
 ## Installation 
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/video-db/ocr-benchmark.git
-    cd ocr-benchmark 
+    git clone https://github.com/vladimir-efimov/videodb-ocr-benchmark.git
+    cd ocr-benchmark
+    git checkout article
     ```
 
 2. Set up the environment:
@@ -61,14 +61,12 @@ Our comprehensive evaluation shows that Vision-Language Models (VLMs) significan
   
 ## Configuration
 
-- **Environment Variables:**  
+- **Environment Variables:**
   Create a `.env` file in the root directory with the following variables (update with your API keys):
 
   ```env
   VIDEO_DB_API_KEY=sk-****-****
-  GEMINI_API_KEY=your_gemini_api_key
-  OPENAI_API_KEY=your_openai_api_key
-  ANTHROPIC_API_KEY=your_anthropic_api_key
+  CLOUD_RU_API_KEY=***
   PREP_GROUND_TRUTH_COLLECTION_ID=your_collection_id  # (Optional) For preparing ground truth
   ```
 
@@ -76,65 +74,36 @@ Our comprehensive evaluation shows that Vision-Language Models (VLMs) significan
 
 ### Running OCR Benchmark
 
-**Quick Test (1 video):**
+**Quick Test (1 video and 1 model):**
 ```bash
-uv run run.py --model benchmark --num_vids 1
+uv run run.py --model ollama --num_vids 1
 ```
 
 **Full Run (using uv):**
 ```bash
-uv run run.py --model benchmark
+uv run run.py --model all
 ```
 
 **Full Run (using standard Python):**
 ```bash
-python run.py --model benchmark
+python run.py --model all
 ```
 
 ## Dataset
 
-The dataset is based on [VideoDB's public collection](https://docs.videodb.io/public-collections-102). This public collection provides open access to a curated set of videos along with their pre-defined scene indexes. Anyone with the VideoDB ID can access these videos and read their corresponding indexes. This feature facilitates easy benchmarking and reproducibility.
+The dataset differs for original benchmark. It contains 4 educational videos with IDE screens, slides, documentation, command line and so on. Actually good goal of such systems like VideoDB is to make easy navigation on educational videos. 
 
-Here are the videos of VideoDB's OCR Benchmark Public Collection (`c-c0a2c223-e377-4625-94bf-910501c2a31c`)
-
-| **Video Name**                 | **Category**                        | **Video ID**                                    |
-|--------------------------------|-------------------------------------|-------------------------------------------------|
-| Stock Market Ticker 01         | Finance/Business/News Text          | m-z-0194c27c-f30c-7803-b2ca-8f1026c940a2         |
-| CNBC 01                        | Finance/Business/News Text          | m-z-0194c27d-10a6-7531-9aaf-d7940a9469b1         |
-| CNBC 04                        | Finance/Business/News Text          | m-z-0194c27e-19c0-7270-9b2e-d467ff30fd1a         |
-| New Paper Reading 04           | Finance/Business/News Text          | m-z-0194c27d-50bc-7c22-9d73-3756717196d5         |
-| Stock Market Ticker 02         | Finance/Business/News Text          | m-z-0194c27e-fe96-7403-a0d8-17a033e5f595         |
-| Legal Document 01              | Legal/Educational Text              | m-z-0194c270-bbfb-7dd2-aaec-62d909b97b32         |
-| Legal Document 03              | Legal/Educational Text              | m-z-0194c27d-2e68-7e63-b44e-5abbe36938df         |
-| Legal Document 05              | Legal/Educational Text              | m-z-0194c27e-5dcf-73b3-a129-e9217d8e611f         |
-| White Board Music Theory 01    | Legal/Educational Text              | m-z-0194c27d-71a3-72c2-9710-773f6f6b80b5         |
-| White Board Music Theory 02    | Legal/Educational Text              | m-z-0194c27f-60d8-74e2-b777-bfed7d9b49d4         |
-| Calculus Limits 01             | Legal/Educational Text              | m-z-0194c280-0778-7b52-8268-c6f1d00dbd52         |
-| React 01                       | Software/Web Development/UI/UX Text | m-z-0194c27c-d107-7030-b990-0b5cc62f514a         |
-| React 03                       | Software/Web Development/UI/UX Text | m-z-0194c27c-894f-7e11-beac-6da09861f796         |
-| React 05                       | Software/Web Development/UI/UX Text | m-z-0194c272-dd5c-7a62-8d86-a47e3c4e4670         |
-| CSS 02                         | Software/Web Development/UI/UX Text | m-z-0194c27c-aebe-75d0-812f-06fbeb60b7d6         |
-| React Animation 01             | Software/Web Development/UI/UX Text | m-z-0194c27e-99ce-7fc0-867f-9bc8358d3388         |
-| React Animation 02             | Software/Web Development/UI/UX Text | m-z-0194c27d-b22a-7982-a796-e332a82d5596         |
-| CSS 01                         | Software/Web Development/UI/UX Text | m-z-0194c27f-a202-7f00-80a9-3bb8a3bf257d         |
-| Handwriting Analysis 01        | Handwritten Text                    | m-z-0194c27f-836c-72f2-8c43-2eeedd6dbc2b         |
-| Handwriting Analysis 02        | Handwritten Text                    | m-z-0194c27d-98b2-75c0-afff-77c8b24515bc         |
-| Cursive Writing Whiteboard     | Handwritten Text                    | m-z-0194c27e-408d-73b1-b550-5bf76fb0339d         |
-| Cursive Handwriting 01         | Handwritten Text                    | m-z-0194c27f-e828-7f43-be2e-7fa19bc39dd4         |
-| Film Analysis 02               | Miscellaneous/Other Text            | m-z-0194c27d-d8d7-73b3-b136-1f4af218cb12         |
-| Billboard Pederstian           | Miscellaneous/Other Text            | m-z-0194c27d-f7f8-7d03-b053-7f0e75498476         |
-| Walk Sign                      | Miscellaneous/Other Text            | m-z-0194c27f-2095-76a3-bc26-96f1167e2526         |
-
-
+Here are the videos of VideoDB's OCR Benchmark Public Collection (`c-cc12f589-e23e-48f8-a351-84858311db67`)
 
 ## Results
 
 The benchmarking framework organizes outputs and logs in a structured directory hierarchy to help you review and interpret the performance of each model. Below is a sample directory tree for an OpenAI run (e.g., using GPT-4O) that illustrates how the results are organized:
 
 ```
-gpt_results/
-└── gpt-4o/
-    └── ocr_2025-02-06_16-32-48/
+_results/
+  └─ vlm/
+     └─ ollama/
+        └─ ocr_2025-02-06_16-32-48/
         ├── evaluations/
         │   └── m-z-0194c270-bbfb-7dd2-aaec-62d909b97b32.json
         ├── logfile.log
