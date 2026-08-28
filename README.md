@@ -41,7 +41,7 @@ This section describes modifications which are made in branch `article` to make 
 1. Clone this repository:
     ```bash
     git clone https://github.com/vladimir-efimov/videodb-ocr-benchmark.git
-    cd ocr-benchmark
+    cd videodb-ocr-benchmark
     git checkout article
     ```
 
